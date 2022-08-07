@@ -5,9 +5,9 @@
 sudo docker run -it --rm --link $CLICKHOUSENAME:clickhouse-server \
               yandex/clickhouse-client --host clickhouse-server --multiquery --query \
               "
-              DROP DATABASE IF EXISTS tokoshit;
-              DROP USER IF EXISTS tokouser;
-              CREATE DATABASE tokoshit;
-              CREATE USER tokouser IDENTIFIED WITH PLAINTEXT_PASSWORD BY 'aPchGhui!';
-              GRANT ALL PRIVILEGES ON tokoshit.* TO tokouser;
+              DROP DATABASE IF EXISTS $CLICKHOUSEDB;
+              DROP USER IF EXISTS $CLICKHOUSEUSER;
+              CREATE DATABASE $CLICKHOUSEDB;
+              CREATE USER $CLICKHOUSEUSER IDENTIFIED WITH PLAINTEXT_PASSWORD BY '$CLICKHOUSEPASS';
+              GRANT ALL PRIVILEGES ON $CLICKHOUSEDB.* TO $CLICKHOUSEUSER;
               "
